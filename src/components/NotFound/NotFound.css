@@ -1,0 +1,30 @@
+.nf {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 16px;
+  text-align: center;
+}
+
+.nf__title {
+  margin: 0 0 10px;
+}
+
+.nf__text {
+  margin: 0 0 16px;
+  opacity: 0.85;
+}
+
+.nf__btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  text-decoration: none;
+}
+
+.nf__btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}

@@ -1,0 +1,29 @@
+.ilc {
+  width: 100%;
+  padding: 28px 16px 50px;
+}
+
+.ilc__header {
+  max-width: 1100px;
+  margin: 0 auto 18px;
+}
+
+.ilc__title {
+  margin: 0 0 6px;
+  font-size: 1.55rem;
+}
+
+.ilc__hint {
+  margin: 0;
+  opacity: 0.85;
+}
+
+.ilc__loading,
+.ilc__empty {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}

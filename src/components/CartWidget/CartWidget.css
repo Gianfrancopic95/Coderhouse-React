@@ -1,0 +1,28 @@
+.cartWidget{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+}
+
+.cartIcon{ font-size: 18px; }
+
+.cartText{
+  font-weight: 700;
+  color: rgba(255,255,255,.92);
+}
+
+.cartBadge{
+  min-width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 999px;
+  background: #22c55e;
+  color: #052e16;
+}

@@ -1,0 +1,57 @@
+.itemCount {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.itemCount__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.itemCount__btn {
+  width: 44px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.itemCount__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.itemCount__value {
+  min-width: 44px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.itemCount__add {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.1);
+  color: inherit;
+  cursor: pointer;
+}
+
+.itemCount__add:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.itemCount__add:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
