@@ -24,6 +24,12 @@ const NavBar = () => {
               <NavLink to={`/category/${cat.id}`}>{cat.name}</NavLink>
             </li>
           ))}
+          <li>
+            <NavLink to="/cart">Carrito</NavLink>
+          </li>
+          <li>
+            <NavLink to="/checkout">Checkout</NavLink>
+          </li>
         </ul>
 
         <CartWidget />

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
+import { useCart } from "../../context/CartContext";
 import "./ItemDetail.css";
 
 /**
@@ -9,8 +10,19 @@ import "./ItemDetail.css";
  */
 const ItemDetail = ({ item }) => {
   const [addedQty, setAddedQty] = useState(0);
+  const { addItem } = useCart();
 
   const onAdd = (qty) => {
+    addItem(
+      {
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        img: item.img,
+        stock: item.stock,
+      },
+      qty
+    );
     setAddedQty(qty);
   };
 
@@ -33,9 +45,21 @@ const ItemDetail = ({ item }) => {
             Stock disponible: <strong>{item.stock}</strong>
           </p>
 
-          {addedQty > 0 ? (
+          {item.stock <= 0 ? (
+            <div className="itemDetail__nostock" role="status" aria-live="polite">
+              ❌ Producto sin stock.
+            </div>
+          ) : addedQty > 0 ? (
             <div className="itemDetail__added" role="status" aria-live="polite">
-              ✅ Agregaste <strong>{addedQty}</strong> unidad(es). (Interfaz lista para el carrito)
+              ✅ Agregaste <strong>{addedQty}</strong> unidad(es).
+              <div className="itemDetail__actions">
+                <Link className="itemDetail__btn" to="/cart">
+                  Ir al carrito
+                </Link>
+                <Link className="itemDetail__btn itemDetail__btn--ghost" to="/">
+                  Seguir comprando
+                </Link>
+              </div>
             </div>
           ) : (
             <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />

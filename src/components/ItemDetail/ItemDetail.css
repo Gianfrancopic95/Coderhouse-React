@@ -63,6 +63,38 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.itemDetail__nostock {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+
+.itemDetail__actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.itemDetail__btn {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-weight: 800;
+  background: #22c55e;
+  color: #052e16;
+}
+
+.itemDetail__btn--ghost {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+}
+
 @media (min-width: 860px) {
   .itemDetail__card {
     grid-template-columns: 1.1fr 0.9fr;

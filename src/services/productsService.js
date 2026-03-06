@@ -1,22 +1,43 @@
-import { products } from "../data/products";
+import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
+import { db, hasFirebaseConfig } from "./firebase";
+import { products as mockProducts } from "../data/products";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-/**
- * Simula un fetch de productos.
- * @param {string | undefined} categoryId
- */
-export async function getProducts(categoryId) {
-  await delay(450);
-  if (!categoryId) return [...products];
-  return products.filter((p) => p.category === categoryId);
+function mapProduct(docSnap) {
+  const data = docSnap.data();
+  return { id: docSnap.id, ...data };
 }
 
 /**
- * Simula un fetch de un producto por id.
- * @param {string} itemId
+ * Obtiene productos desde Firestore (colección: products).
+ * Si no hay credenciales de Firebase configuradas, cae a mock data.
+ */
+export async function getProducts(categoryId) {
+  // Fallback amigable (para que el proyecto compile sin .env)
+  if (!hasFirebaseConfig || !db) {
+    await delay(250);
+    if (!categoryId) return [...mockProducts];
+    return mockProducts.filter((p) => p.category === categoryId);
+  }
+
+  const productsRef = collection(db, "products");
+  const q = categoryId ? query(productsRef, where("category", "==", categoryId)) : productsRef;
+  const snap = await getDocs(q);
+  return snap.docs.map(mapProduct);
+}
+
+/**
+ * Obtiene un producto por id desde Firestore (doc: products/{itemId}).
+ * Si no hay Firebase, cae a mock data.
  */
 export async function getProductById(itemId) {
-  await delay(450);
-  return products.find((p) => p.id === itemId) ?? null;
+  if (!hasFirebaseConfig || !db) {
+    await delay(250);
+    return mockProducts.find((p) => p.id === itemId) ?? null;
+  }
+
+  const ref = doc(db, "products", itemId);
+  const snap = await getDoc(ref);
+  return snap.exists() ? mapProduct(snap) : null;
 }
